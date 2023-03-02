@@ -33,10 +33,10 @@ function Footer() {
 }
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <div className='container'>
+  <div>
     <Header/>
     <MainBody />
-    <div className="row">Students Enrolled</div>
+    <div className="container row">Students Enrolled</div>
     <Student experience={2} name="Jin Yang"/>
     <Footer/>
   </div>
