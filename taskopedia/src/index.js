@@ -1,26 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import Header from './header';
+import Students from './students';
 
-function Header() {
-  return (
-    <div>
-      <MainHeader></MainHeader>
-      <SubHeader></SubHeader>
-    </div>
-  )
-}
 
-function MainHeader() {
-  return (
-    <h1>REACT COURSE</h1>
-  )
-}
-
-function SubHeader() {
-  return (
-    <p>This is an exciting course</p>
-  )
-}
 
 function MainBody() {
   const whatWeWillLearn = "React JS"
@@ -53,6 +36,7 @@ root.render(
   <div>
     <Header/>
     <MainBody />
+    <Students />
     <Footer/>
   </div>
 );
