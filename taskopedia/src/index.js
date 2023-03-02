@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './header';
-import Students from './students';
+import Student from './student';
 
 
 
@@ -33,10 +33,11 @@ function Footer() {
 }
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <div>
+  <div className='container'>
     <Header/>
     <MainBody />
-    <Students />
+    <div className="row">Students Enrolled</div>
+    <Student experience={2} name="Jin Yang"/>
     <Footer/>
   </div>
 );
