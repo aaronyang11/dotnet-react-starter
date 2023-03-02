@@ -3,7 +3,22 @@ import ReactDOM from 'react-dom/client';
 
 function Header() {
   return (
+    <div>
+      <MainHeader></MainHeader>
+      <SubHeader></SubHeader>
+    </div>
+  )
+}
+
+function MainHeader() {
+  return (
     <h1>REACT COURSE</h1>
+  )
+}
+
+function SubHeader() {
+  return (
+    <p>This is an exciting course</p>
   )
 }
 
