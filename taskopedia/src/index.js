@@ -1,43 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import Header from './header';
-import Student from './student';
+import Header from './Layout/Header';
+import Footer from './Layout/Footer';
+import MainBody from './MainBody';
 
 
-
-function MainBody() {
-  const whatWeWillLearn = "React JS"
-  const numberOfLectures = 3;
-
-  return (
-    <div>
-      <p>
-        In this course, we will learn {whatWeWillLearn} by building TaskOpedia!<br></br>
-        Total Lecture - {numberOfLectures}
-      </p>
-      
-      <ul>
-        <li>Basic Foundation</li>
-        <li>Functional and Class Components</li>
-      </ul>
-    </div>
-  )
-}
-
-function Footer() {
-  return (
-    <footer>
-      Happy Coding!
-    </footer>
-  )
-}
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <div>
-    <Header/>
-    <MainBody />
-    <div className="container row">Students Enrolled</div>
-    <Student experience={2} name="Jin Yang"/>
+  <div style={{
+    backgroundColor: "black",
+    color:'grey'
+  }}>
+    <Header />
+    <div className='px-4'><MainBody/></div>
     <Footer/>
   </div>
 );
