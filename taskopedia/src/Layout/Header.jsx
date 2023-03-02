@@ -1,14 +1,14 @@
 import "../CSS/style.css";
 import logo from "../images/react.png";
 
-function Header() {
+const Header = () => {
   return (
     <div>
       <MainHeader></MainHeader>
       <SubHeader></SubHeader>
     </div>
   );
-}
+};
 
 function MainHeader() {
   return (

@@ -1,7 +1,7 @@
-import Student from "./Student";
-import StudentReview from "./Layout/StudentReview";
+import Student from "./Components/Student/Student";
+import StudentReview from "./Components/Student/StudentReview";
 
-function MainBody(props) {
+const MainBody = (props) => {
   const whatWeWillLearn = "React JS";
   const numberOfLectures = 3;
 
@@ -41,6 +41,6 @@ function MainBody(props) {
       ></Student>
     </div>
   );
-}
+};
 
 export default MainBody;
