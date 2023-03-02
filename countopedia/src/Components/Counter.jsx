@@ -1,8 +1,39 @@
 import React from "react";
 
 class Counter extends React.Component {
+  constructor(props) {
+    super(props);
+    this.handleAttack = this.handleAttack.bind(this);
+    this.handleDefense = this.handleDefense.bind(this);
+    this.state = {
+      count: 0,
+    };
+  }
+  handleAttack() {
+    // alert("Attack clicked");
+    this.setState((previousState) => {
+      return { count: previousState.count + 1 };
+    });
+  }
+
+  handleDefense() {
+    // alert("Defend clicked");
+    this.setState((previousState) => {
+      return { count: previousState.count - 1 };
+    });
+  }
   render() {
-    return <p className="text-white">Counter</p>;
+    return (
+      <div className="row text-white">
+        <h1>Counter:{this.state.count}</h1>
+        <button onClick={this.handleAttack} style={{ width: "200px" }}>
+          +1
+        </button>
+        <button onClick={this.handleDefense} style={{ width: "200px" }}>
+          -1
+        </button>
+      </div>
+    );
   }
 }
 
