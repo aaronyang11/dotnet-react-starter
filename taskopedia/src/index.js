@@ -23,14 +23,19 @@ function SubHeader() {
 }
 
 function MainBody() {
+  const whatWeWillLearn = "React JS"
+  const numberOfLectures = 3;
+
   return (
     <div>
       <p>
-        In this course, we will learn react js by building TaskOpedia!
+        In this course, we will learn {whatWeWillLearn} by building TaskOpedia!<br></br>
+        Total Lecture - {numberOfLectures}
       </p>
+      
       <ul>
-        <li>Call Ben</li>
-        <li>Go to Walmart</li>
+        <li>Basic Foundation</li>
+        <li>Functional and Class Components</li>
       </ul>
     </div>
   )
