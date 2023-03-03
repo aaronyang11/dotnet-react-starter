@@ -10,6 +10,8 @@ class Counter extends React.Component {
     this.handleRandomPlay = this.handleRandomPlay.bind(this);
     this.state = {
       count: 0,
+      lastPlay: "",
+      gameStatus: "",
     };
   }
   handleAttack() {
@@ -17,7 +19,12 @@ class Counter extends React.Component {
 
     this.setState((previousState) => {
       let newCount = previousState.count + Math.round(Math.random() * 10);
-      return { count: newCount };
+      let newStatus = newCount >= 10 ? "You won!" : previousState.gameStatus;
+      return {
+        count: newCount,
+        gameStatus: newStatus,
+        lastPlay: "Attack",
+      };
     });
   }
 
@@ -25,13 +32,14 @@ class Counter extends React.Component {
     // alert("Defend clicked");
     this.setState((previousState) => {
       let newCount = previousState.count - Math.round(Math.random() * 10);
-      return { count: newCount };
+      let newStatus = newCount <= -10 ? "You lost!" : previousState.gameStatus;
+      return { count: newCount, gameStatus: newStatus, lastPlay: "Defense" };
     });
   }
 
   handleReset = () => {
     this.setState(() => {
-      return { count: 0 };
+      return { count: 0, gameStatus: "", lastPlay: "" };
     });
   };
 
@@ -49,8 +57,8 @@ class Counter extends React.Component {
       <div className="row text-white text-center">
         <h1>Game Score:{this.state.count}</h1>
         <p>You win at +10 points and lose at -10 points</p>
-        <p>Last Play: </p>
-        <h3>Game Status: </h3>
+        <p>Last Play: {this.state.lastPlay}</p>
+        <h3>Game Status: {this.state.gameStatus}</h3>
         <div className="col-6 col-md-3 offset-md-3">
           <img
             src={attack}
@@ -65,7 +73,7 @@ class Counter extends React.Component {
           ></img>
         </div>
 
-        <div className="col-6 col-md-3 offset-md-3">
+        <div className="col-6 col-md-3">
           <img
             src={defend}
             onClick={this.handleDefense}
