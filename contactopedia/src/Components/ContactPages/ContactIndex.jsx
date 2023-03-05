@@ -1,3 +1,4 @@
+/* eslint-disable eqeqeq */
 import React from "react";
 import Header from "../Layout/Header";
 import Footer from "../Layout/Footer";
@@ -38,15 +39,55 @@ class ContactIndex extends React.Component {
   }
 
   handleAddContact = (newContact) => {
-    const finalContact = {
-      ...newContact,
-      id: this.state.contactList[this.state.contactList.length - 1].id + 1,
-      isFavorite: false,
-    };
+    if (newContact.name == "") {
+      return { status: "failure", msg: "Please Enter a valid name" };
+    }
+    if (newContact.phone == "") {
+      return { status: "failure", msg: "Please Enter a valid name" };
+    }
+
+    const duplicateRecord = this.state.contactList.filter((x) => {
+      if (x.name == newContact.name && x.phone == newContact.phone) {
+        return true;
+      }
+    });
+    if (duplicateRecord.length > 0) {
+      return {
+        status: "failure",
+        msg: "Duplicate Record",
+      };
+    } else {
+      const finalContact = {
+        ...newContact,
+        id: this.state.contactList[this.state.contactList.length - 1].id + 1,
+        isFavorite: false,
+      };
+      this.setState((prevState) => {
+        return {
+          contactList: prevState.contactList.concat([finalContact]),
+          status: "success",
+          msg: "Contact was added successfully",
+        };
+      });
+    }
+  };
+
+  handleToggleFavorites = (contact) => {
+    console.log(contact);
     this.setState((prevState) => {
-      return { contactList: prevState.contactList.concat([finalContact]) };
+      return {
+        contactList: prevState.contactList.map((obj) => {
+          if (obj.id == contact.id) {
+            return { ...obj, isFavorite: !obj.isFavorite };
+          } else {
+            return obj;
+          }
+        }),
+      };
     });
   };
+
+  handleDeleteContact = (contact) => {};
   render() {
     return (
       <div>
@@ -70,6 +111,7 @@ class ContactIndex extends React.Component {
                   contacts={this.state.contactList.filter(
                     (u) => u.isFavorite == true
                   )}
+                  favoriteClick={this.handleToggleFavorites}
                 />
               </div>
             </div>
@@ -79,6 +121,7 @@ class ContactIndex extends React.Component {
                   contacts={this.state.contactList.filter(
                     (u) => u.isFavorite == false
                   )}
+                  favoriteClick={this.handleToggleFavorites}
                 />
               </div>
             </div>
