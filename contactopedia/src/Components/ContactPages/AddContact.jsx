@@ -12,11 +12,23 @@ class AddContact extends React.Component {
     const name = e.target.elements.contactName.value.trim();
     const email = e.target.elements.contactEmail.value.trim();
     const phone = e.target.elements.contactPhone.value.trim();
-    const response = this.props.handleAddContact({
-      name: name,
-      email: email,
-      phone: phone,
-    });
+    const contactId = e.target.elements.contactId.value.trim();
+    let response = undefined;
+    if (this.props.isUpdating) {
+      response = this.props.handleUpdateContact({
+        name: name,
+        email: email,
+        phone: phone,
+        id: contactId,
+      });
+    } else {
+      response = this.props.handleAddContact({
+        name: name,
+        email: email,
+        phone: phone,
+        id: contactId,
+      });
+    }
 
     if (response.status == "success") {
       this.setState({ errorMessage: undefined, successMessage: response.msg });
@@ -33,12 +45,17 @@ class AddContact extends React.Component {
           className="contact-form"
         >
           <div className="row p-2">
-            <div className="col-12 text-white-50">Add a new contact</div>
+            <div className="col-12 text-white-50">
+              {this.props.isUpdating ? "Update Contact" : "Add a new contact"}
+            </div>
             <div className="col-12 col-md-4 p-2">
               <input
                 className="form-control form-control-sm"
                 placeholder="Name..."
                 name="contactName"
+                defaultValue={
+                  this.props.isUpdating ? this.props.selectedContact.name : ""
+                }
               ></input>
             </div>
             <div className="col-12 col-md-4 p-2">
@@ -55,6 +72,14 @@ class AddContact extends React.Component {
                 name="contactPhone"
               ></input>
             </div>
+            <input
+              hidden
+              className="form-control form-control-sm"
+              name="contactId"
+              defaultValue={
+                this.props.isUpdating ? this.props.selectedContact.id : ""
+              }
+            ></input>
             {this.state.errorMessage == undefined ? (
               <div></div>
             ) : (
@@ -69,11 +94,31 @@ class AddContact extends React.Component {
                 {this.state.successMessage}
               </div>
             )}
-            <div className="col-12 col-md-6 offset-md-3 p-2">
+            <div
+              className={`col-12 p-1 ${
+                this.props.isUpdating
+                  ? "col-md-4 offset-md-2"
+                  : "col-md-6 offset-md-3"
+              }`}
+            >
               <button className="btn btn-primary btn-sm form-control">
-                Create
+                {this.props.isUpdating ? "Update" : "Create"}
               </button>
             </div>
+            {this.props.isUpdating && (
+              <div className="col-12 p-1 col-md-4">
+                <button
+                  className="btn btn-secondary btn-sm form-control"
+                  onClick={() =>
+                    this.props.handleCancelUpdateContact(
+                      this.props.selectedContact
+                    )
+                  }
+                >
+                  Cancel
+                </button>
+              </div>
+            )}
           </div>
         </form>
       </div>
