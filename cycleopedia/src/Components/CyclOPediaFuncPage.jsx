@@ -1,5 +1,5 @@
 import { getRandomUser } from "../Utility/api"
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import React from "react"
 import InstructorFunc from "./InstructorFunc"
 
@@ -12,6 +12,9 @@ const CyclOPediaFuncPage = () => {
       hideInstructor: false,
     }
   })
+
+  let totalRender = useRef(0)
+  let prevStudentCount = useRef(0)
 
   const [inputName, setInputName] = useState(() => {
     return ""
@@ -42,6 +45,8 @@ const CyclOPediaFuncPage = () => {
   }
   useEffect(() => {
     console.log("This will be called on every render.")
+    totalRender.current = totalRender.current + 1
+    console.log("Total Render: " + totalRender.current)
   })
 
   useEffect(() => {
@@ -83,9 +88,9 @@ const CyclOPediaFuncPage = () => {
         }
       })
     }
-    if (state.studentList.length < state.studentCount) {
+    if (prevStudentCount.current < state.studentCount) {
       getStudent()
-    } else if (state.studentList.length > state.studentCount) {
+    } else if (prevStudentCount.current > state.studentCount) {
       setState((prevState) => {
         return {
           ...prevState,
@@ -93,6 +98,10 @@ const CyclOPediaFuncPage = () => {
         }
       })
     }
+  }, [state.studentCount])
+
+  useEffect(() => {
+    prevStudentCount.current = state.studentCount
   }, [state.studentCount])
 
   useEffect(() => {
@@ -115,6 +124,7 @@ const CyclOPediaFuncPage = () => {
           <InstructorFunc instructor={state.instructor} />
         ) : null}
       </div>
+      <div className="p-3">Total Render: {totalRender.current}</div>
 
       <div className="p-3">
         <span className="h-4 text-success">Feedback</span>
