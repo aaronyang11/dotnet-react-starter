@@ -1,5 +1,5 @@
 import { getRandomUser } from "../Utility/api"
-import { useState, useEffect, useRef } from "react"
+import { useState, useEffect, useRef, useId } from "react"
 import React from "react"
 import InstructorFunc from "./InstructorFunc"
 
@@ -16,6 +16,7 @@ const CyclOPediaFuncPage = () => {
   let totalRender = useRef(0)
   let prevStudentCount = useRef(0)
   let feedbackInputRef = useRef(null)
+  let id = useId()
 
   const [inputName, setInputName] = useState(() => {
     return ""
@@ -135,19 +136,25 @@ const CyclOPediaFuncPage = () => {
           type="text"
           placeholder="Name..."
           value={inputName}
+          id={`${id}-inputName`}
           onChange={(e) => {
             setInputName(e.target.value.trim())
           }}
         ></input>
+        <label htmlFor={`${id}-inputName`}>Name: </label>
+        {inputName}
         <br />
         <textarea
           placeholder="Feedback..."
           value={inputFeedback}
+          id={`${id}-inputFeedback`}
           ref={feedbackInputRef}
           onChange={(e) => {
             setInputFeedback(e.target.value.trim())
           }}
         ></textarea>
+        <label htmlFor={`${id}-inputFeedback`}>Feedback: </label>
+        {inputFeedback}
       </div>
       <div className="p-3">
         <span className="h4 text-success">Students</span>
