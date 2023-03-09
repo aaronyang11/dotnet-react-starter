@@ -15,6 +15,7 @@ const CyclOPediaFuncPage = () => {
 
   let totalRender = useRef(0)
   let prevStudentCount = useRef(0)
+  let feedbackInputRef = useRef(null)
 
   const [inputName, setInputName] = useState(() => {
     return ""
@@ -50,6 +51,7 @@ const CyclOPediaFuncPage = () => {
   })
 
   useEffect(() => {
+    feedbackInputRef.current.focus()
     console.log("This will be called on the first/initial render.")
     const getUser = async () => {
       const response = await getRandomUser()
@@ -141,6 +143,7 @@ const CyclOPediaFuncPage = () => {
         <textarea
           placeholder="Feedback..."
           value={inputFeedback}
+          ref={feedbackInputRef}
           onChange={(e) => {
             setInputFeedback(e.target.value.trim())
           }}
