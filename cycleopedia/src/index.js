@@ -1,9 +1,10 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import CyclOPediaClassPage from "./Components/CyclOPediaClassPage";
-import Header from "./Components/Header";
+import React from "react"
+import ReactDOM from "react-dom/client"
+import CyclOPediaClassPage from "./Components/CyclOPediaClassPage"
+import CyclOPediaFuncPage from "./Components/CyclOPediaFuncPage.jsx"
+import Header from "./Components/Header"
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
+const root = ReactDOM.createRoot(document.getElementById("root"))
 root.render(
   <div>
     <Header />
@@ -12,6 +13,10 @@ root.render(
         <span className="h1 text-warning text-center">Class Component</span>
         <CyclOPediaClassPage />
       </div>
+      <div className="col-6">
+        <span className="h1 text-warning text-center">Func Component</span>
+        <CyclOPediaFuncPage />
+      </div>
     </div>
   </div>
-);
+)
