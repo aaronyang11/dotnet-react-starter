@@ -2,7 +2,7 @@ import { createSlice } from "@reduxjs/toolkit"
 
 const initialState = () => {
   return {
-    destination: [
+    destinationList: [
       { name: "Hong Kong", days: 7, fact: "World's longes covered escalator" },
       { name: "Japan", days: 10, fact: "Japan is mostly mountains" },
       {
