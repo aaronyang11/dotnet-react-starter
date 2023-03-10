@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit"
-import { resetDestination } from "./destinationSlice"
 import { resetReduxOPedia } from "../action/actions"
 
 const initialState = { count: 10 }
@@ -33,6 +32,5 @@ export const {
   decrement,
   incrementMultiplier,
   decrementMultiplier,
-  resetCounter,
 } = counterSlice.actions
 export const counterReducer = counterSlice.reducer
