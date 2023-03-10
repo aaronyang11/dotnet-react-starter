@@ -5,15 +5,14 @@ import { resetDestination } from "../../redux/slice/destinationSlice"
 
 function ResetApp() {
   const dispatch = useDispatch()
-  const resetCounterAndDestination = () => {
-    dispatch(resetCounter())
-    dispatch(resetDestination())
-  }
+
   return (
     <div className="text-center">
       <button
         className="btn btn-warning"
-        onClick={resetCounterAndDestination}
+        onClick={() => {
+          dispatch(resetDestination())
+        }}
       >
         Reset App
       </button>
