@@ -24,27 +24,35 @@ function Counter() {
         borderTop: "1px solid #999",
       }}
     >
-      <div className="text-white pb-2 h4">Counter: {count}</div>
-      <div className="row">
-        <div className="border p-4">
-          <h4 className="text-success pb-2">Basic Counter</h4>
-          <button
-            className="btn btn-primary"
-            onClick={() => {
-              dispatch(increment())
-            }}
-          >
-            Add
-          </button>
-          &nbsp;
-          <button
-            className="btn btn-danger"
-            onClick={() => {
-              dispatch(decrement())
-            }}
-          >
-            Subtract
-          </button>
+      <div className="border p-4">
+        <div className="text-white pb-2 h4">Counter: {count}</div>
+        <div className="row">
+          <div className="border p-4">
+            <h4 className="text-success pb-2">Basic Counter</h4>
+            <div className="row">
+              <div className="col-6 p-1">
+                <button
+                  className="btn btn-primary form-control"
+                  onClick={() => {
+                    dispatch(increment())
+                  }}
+                >
+                  Add
+                </button>
+              </div>
+              <div className="col-6 p-1">
+                <button
+                  className="btn btn-danger form-control"
+                  onClick={() => {
+                    dispatch(decrement())
+                  }}
+                >
+                  Subtract
+                </button>
+              </div>
+            </div>
+          </div>
+
           <div className="border p-4">
             <h4 className="text-success pb-2">Multiplier Counter</h4>
             <div className="row">
