@@ -1,7 +1,6 @@
 import React from "react"
 import { useDispatch } from "react-redux"
-import { resetCounter } from "../../redux/slice/counterSlice"
-import { resetDestination } from "../../redux/slice/destinationSlice"
+import { resetReduxOPedia } from "../../redux/action/actions"
 
 function ResetApp() {
   const dispatch = useDispatch()
@@ -11,7 +10,7 @@ function ResetApp() {
       <button
         className="btn btn-warning"
         onClick={() => {
-          dispatch(resetDestination())
+          dispatch(resetReduxOPedia())
         }}
       >
         Reset App
