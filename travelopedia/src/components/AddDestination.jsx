@@ -1,11 +1,18 @@
 import React from "react"
 import { useState } from "react"
-
+import { useAddDestinationMutation } from "../api/destinationApi"
 function AddDestination() {
   const [newCity, setNewCity] = useState("")
   const [newCountry, setNewCountry] = useState("")
+  const [addDestinationMutation, results] = useAddDestinationMutation()
   const handleFormSubmit = (e) => {
     e.preventDefault()
+    addDestinationMutation({
+      id: parseInt(Math.random() * 100),
+      city: newCity,
+      country: newCountry,
+      daysNeeded: parseInt(Math.random() * 10) + 1,
+    })
     setNewCity("")
     setNewCountry("")
   }
@@ -14,7 +21,7 @@ function AddDestination() {
       <form onSubmit={handleFormSubmit}>
         <div className="row col-8 offset-2">
           <h4>Enter a New Destination</h4>
-          <div class="col-5 p-1">
+          <div className="col-5 p-1">
             <input
               type="text"
               className="form-control"
