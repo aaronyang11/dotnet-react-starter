@@ -11,6 +11,12 @@
       "city": "London",
       "country": "UK",
       "daysNeeded": 10
+    },
+    {
+      "id": 48,
+      "city": "Auckland",
+      "country": "New Zealand",
+      "daysNeeded": 3
     }
   ]
 }
