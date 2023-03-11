@@ -1,6 +1,7 @@
 import React from "react"
 import AddDestination from "./AddDestination"
 import DestinationList from "./DestinationList"
+import RandomDestination from "./RandomDestination"
 
 function DestinationIndex() {
   return (
@@ -8,6 +9,7 @@ function DestinationIndex() {
       <h1 className="text-success text-center">Travel List</h1>
       <AddDestination />
       <DestinationList />
+      <RandomDestination />
     </div>
   )
 }
