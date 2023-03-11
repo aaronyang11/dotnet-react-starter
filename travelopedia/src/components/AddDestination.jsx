@@ -13,14 +13,14 @@ function AddDestination() {
               placeholder="Enter city..."
             ></input>
           </div>
-          <div class="col-5 p-1">
+          <div className="col-5 p-1">
             <input
               type="text"
               className="form-control"
               placeholder="Enter country..."
             ></input>
           </div>
-          <div class="col-2 p-1">
+          <div className="col-2 p-1">
             <button className="btn btn-success form-control">Add</button>
           </div>
         </div>
