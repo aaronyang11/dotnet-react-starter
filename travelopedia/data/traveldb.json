@@ -7,16 +7,10 @@
       "daysNeeded": 3
     },
     {
-      "id": 69.45571432002713,
-      "city": "Auckland",
-      "country": "New Zealand",
-      "daysNeeded": 9
-    },
-    {
-      "id": 74,
-      "city": "Tokyo",
-      "country": "Japan",
-      "daysNeeded": 2
+      "id": 75,
+      "city": "London",
+      "country": "UK",
+      "daysNeeded": 10
     }
   ]
 }
