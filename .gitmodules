@@ -1,0 +1,3 @@
+[submodule "RedMango_API"]
+	path = RedMango_API
+	url = ../RedMango_API
